@@ -4,6 +4,8 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JFrame;
+
 public class CurveViewer extends ScreenLogic {
 	
 	private MathFunction func;
@@ -21,6 +23,12 @@ public class CurveViewer extends ScreenLogic {
 
 	@Override
 	protected void paintComponent(Graphics g) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addSubComponents(JFrame frame) {
 		// TODO Auto-generated method stub
 		
 	}

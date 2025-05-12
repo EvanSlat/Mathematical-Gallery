@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.Timer;
 
 public abstract class ScreenLogic extends JComponent{
@@ -21,7 +22,7 @@ public abstract class ScreenLogic extends JComponent{
 	 */
 	public abstract ScreenLogic InterperetUserInput(KeyEvent ke, MouseEvent me);
 	
-	
+	public abstract void addSubComponents(JFrame frame);
 	/*
 	 * This should be self contained and need no outside paramiters to work. it is allowed to use class fields to works
 	 */
