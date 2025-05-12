@@ -26,7 +26,6 @@ public class MainManager {
 		frame.setTitle("Neet curve");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(new Dimension(1000,1000));
-		frame.setLayout(null);
 		frame.addKeyListener(new KeyListener() {
 
 			@Override
@@ -85,9 +84,11 @@ public class MainManager {
 	}
 	
 	public static void changeScreens(ScreenLogic ns) {
-		frame.removeAll();
-		frame.add(ns);
+		frame.getContentPane().removeAll();
+		ns.setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
 		ns.addSubComponents(frame);
+//		ns.setBounds(0,0,FRAME_WIDTH,FRAME_HEIGHT);
+		frame.add(ns);
 		currentScreen = ns;
 	}
 	

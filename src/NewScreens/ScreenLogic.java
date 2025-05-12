@@ -14,7 +14,7 @@ public abstract class ScreenLogic extends JComponent{
 
 	public static int fps = 60;
 	public static Timer timer = null;
-	private int timeStep;
+	protected int timeStep;
 	
 	/*
 	 * This returns what screen should be switched to, should return self when nothing needs to be updated
@@ -23,11 +23,6 @@ public abstract class ScreenLogic extends JComponent{
 	public abstract ScreenLogic InterperetUserInput(KeyEvent ke, MouseEvent me);
 	
 	public abstract void addSubComponents(JFrame frame);
-	/*
-	 * This should be self contained and need no outside paramiters to work. it is allowed to use class fields to works
-	 */
-	@Override
-	protected abstract void paintComponent(Graphics g);
 	
 	
 	public void startTimer() {

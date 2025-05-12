@@ -81,20 +81,7 @@ public class ControlPanel extends ScreenLogic {
 	@Override
 	public ScreenLogic InterperetUserInput(KeyEvent ke, MouseEvent me) {
 		// TODO Auto-generated method stub
-		
-		System.out.println(pointsInput.getText());
-		return null;
+		this.fps = Integer.parseInt(fpsInput.getText());
+		return new CurveViewer(Integer.parseInt(pointsInput.getText()),Integer.parseInt(speedInput.getText())*0.001,Integer.parseInt(radiusInput.getText()));
 	}
-
-	@Override
-	protected void paintComponent(Graphics g) {
-		// TODO Auto-generated method stub
-		
-		
-	}
-
-
-
-
-
 }
