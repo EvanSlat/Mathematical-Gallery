@@ -1,9 +1,12 @@
 package NewScreens;
 
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -24,6 +27,7 @@ public class ControlPanel extends ScreenLogic {
 	private JTextField speedInput;
 	private JTextField fpsText;
 	private JTextField fpsInput;
+	private JButton inputButton;
 	
 	private JPanel localPanel;
 	
@@ -69,6 +73,25 @@ public class ControlPanel extends ScreenLogic {
 			}
 			localPanel.add(allComponents[i]);
 		}
+		
+		
+		inputButton = new JButton("Enter");
+		inputButton.setBounds(10, 330, 100, 20);
+		inputButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				ScreenLogic.fps = Integer.parseInt(fpsInput.getText());
+				int points = Integer.parseInt(pointsInput.getText());
+				double speed = Integer.parseInt(speedInput.getText())*0.001;
+				int radius = Integer.parseInt(radiusInput.getText());
+				int degree = Integer.parseInt(degreeInput.getText());
+				MainManager.changeScreens(new CurveViewer(points,speed,radius,degree));
+				
+			}
+		});
+		localPanel.add(inputButton);
 	}
 	
 
@@ -80,8 +103,6 @@ public class ControlPanel extends ScreenLogic {
 	
 	@Override
 	public ScreenLogic InterperetUserInput(KeyEvent ke, MouseEvent me) {
-		// TODO Auto-generated method stub
-		this.fps = Integer.parseInt(fpsInput.getText());
-		return new CurveViewer(Integer.parseInt(pointsInput.getText()),Integer.parseInt(speedInput.getText())*0.001,Integer.parseInt(radiusInput.getText()));
+		return null;
 	}
 }

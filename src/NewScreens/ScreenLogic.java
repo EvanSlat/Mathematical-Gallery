@@ -38,12 +38,30 @@ public abstract class ScreenLogic extends JComponent{
 				}
 			});
 			timer.start();
+		}else {
+			timer.start();
+		}
+	}
+	/*
+	 * This will pause it letting you resume later
+	 */
+	public void pauseUnpauseTimer() {
+		if(timer != null) {
+			if(timer.isRunning()) {
+				timer.stop();
+			}else {
+				timer.start();
+			}
 		}
 	}
 	
+	/*
+	 * this clears the timer letting it be remade in other components and to avoid memory loss.
+	 */
 	public void endTimer() {
 		if(timer != null) {
 			timer.stop();
+			timer = null;
 		}
 	}
 }

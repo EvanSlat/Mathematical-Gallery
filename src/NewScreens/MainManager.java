@@ -30,7 +30,7 @@ public class MainManager {
 
 			@Override
 			public void keyTyped(KeyEvent e) {
-				userInputs(e,null);
+//				userInputs(e,null);
 			}
 
 			@Override
@@ -40,7 +40,6 @@ public class MainManager {
 
 			@Override
 			public void keyReleased(KeyEvent e) {
-				userInputs(e,null);
 			}
 			
 		});
@@ -89,6 +88,11 @@ public class MainManager {
 		ns.addSubComponents(frame);
 //		ns.setBounds(0,0,FRAME_WIDTH,FRAME_HEIGHT);
 		frame.add(ns);
+		
+		frame.revalidate();
+		frame.repaint();
+		frame.setFocusable(true); 
+		frame.requestFocusInWindow(); 
 		currentScreen = ns;
 	}
 	
