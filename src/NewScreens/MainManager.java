@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.JFrame;
 
@@ -73,7 +74,26 @@ public class MainManager {
 			}
 		});
 		
-		currentScreen = new ControlPanel();
+		frame.addMouseMotionListener(new MouseMotionListener() {
+			
+			private int priorX = 0;
+			private int priorY = 0;
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				//TODO make a system for tracking how far the mouse has moved after being pressed
+				
+			}
+		});
+		
+		
+//		currentScreen = new ControlPanel();
+		currentScreen = new MandelViewer();
 		frame.add(currentScreen);
 		currentScreen.addSubComponents(frame);
 //		frame.pack();

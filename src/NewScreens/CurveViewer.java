@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 
 public class CurveViewer extends ScreenLogic {
 	private static final long serialVersionUID = 1L;
-	private MathFunction func;
+	private Cardioid func;
 	private int degree;
 	private double stepScale;
 	private int inverseStepScale;
@@ -37,6 +37,14 @@ public class CurveViewer extends ScreenLogic {
 					break;
 				case KeyEvent.VK_RIGHT:
 					timeStep++;
+					repaint();
+					break;
+				case KeyEvent.VK_UP:
+					func.setRadius(func.getRadius()+1);
+					repaint();
+					break;
+				case KeyEvent.VK_DOWN:
+					func.setRadius(func.getRadius()-1);
 					repaint();
 					break;
 				default:

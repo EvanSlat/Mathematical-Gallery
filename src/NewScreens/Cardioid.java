@@ -58,13 +58,11 @@ public class Cardioid implements MathFunction {
 
 	}
 
-	@Override
 	public int getRadius() {
 		// TODO Auto-generated method stub
 		return this.radius;
 	}
 
-	@Override
 	public void setRadius(int r) {
 		this.radius = r;
 		assignPoints();
