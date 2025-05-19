@@ -5,12 +5,16 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.RecursiveTask;
 
 public class Mandelbrot implements MathFunction {
 
-	private HashSet<MPoint> points;
+	private List<MPoint> points;
 	private List<Color> colors;
 	
 	private double x;
@@ -72,7 +76,7 @@ public class Mandelbrot implements MathFunction {
 	}
 	
 	private void setupPoints() {
-		this.points = new HashSet<MPoint>();
+		this.points = new ArrayList<MPoint>();
 		double wps = width / (widthPoints-1);
 		double hps = height / (heightPoints-1);
 		for(int i = 0; i < widthPoints; i++) {
@@ -82,12 +86,23 @@ public class Mandelbrot implements MathFunction {
 		}
 	}
 	
+	//TODO make this be parralelized 
 	private void runCalculations() {
-		for(int i = 0; i<maxIterations;i++) {
-			for(MPoint m:points) {
+		
+//		for(MPoint m :points) {
+//				for(int j = 0; j<maxIterations;j++) {						
+//					m.runItteration();
+//				}
+//			}
+		points.parallelStream().forEach(m->{
+			for(int i = 0;i<maxIterations;i++) {
 				m.runItteration();
 			}
-		}
+		});
+//		ForkJoinPool pool = new ForkJoinPool();
+//		List<MPoint> syncList = Collections.synchronizedList(points);
+//		ParallelMandel task= new ParallelMandel(syncList,maxIterations);
+//		int r = pool.invoke(task);
 	}
 	
 	private void setUpColors() {
@@ -154,6 +169,54 @@ public class Mandelbrot implements MathFunction {
 				}
 			}
 		}
+	}
+	
+	//https://www.geeksforgeeks.org/parallel-programming-in-java/
+	static class ParallelMandel extends RecursiveTask<Integer>{
+		private static final int THRESHOLD = 1000;
+		private List<MPoint> points;
+		private int start, end, mI;
+		
+		public ParallelMandel(List<MPoint>p,int start, int end, int mI) {
+			this.points = p;
+			this.start = start;
+			this.end = end;
+			this.mI = mI;
+		}
+		
+		public ParallelMandel(List<MPoint>p,int mI) {
+			this.points = p;
+			start = 0;
+			end = p.size()-1;
+			this.mI = mI;
+		}
+		
+		@Override
+		protected Integer compute() {
+			// TODO Auto-generated method stub
+			if(end-start<= THRESHOLD) {
+				for(int i = start; i<end;i++) {
+					MPoint temp = points.get(i);
+					for(int j = 0; j<mI;j++) {						
+						temp.runItteration();
+					}
+				}
+				return 1;
+			}else {
+                int mid = (start + end) / 2;
+                ParallelMandel leftTask = new ParallelMandel(points, start, mid,mI);
+                ParallelMandel rightTask = new ParallelMandel(points, mid, end,mI);
+
+                // Fork left task
+                leftTask.fork();
+                // Directly compute right task and join results
+                int rightResult = rightTask.compute();
+                int leftResult = leftTask.join();
+
+                return leftResult + rightResult;
+			}
+		}
+		
 	}
 
 	

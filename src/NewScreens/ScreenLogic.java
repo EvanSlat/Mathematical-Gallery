@@ -20,7 +20,7 @@ public abstract class ScreenLogic extends JComponent{
 	 * This returns what screen should be switched to, should return self when nothing needs to be updated
 	 * If it does need to switch screens, then it will self populate the screen data.
 	 */
-	public abstract ScreenLogic InterperetUserInput(KeyEvent ke, MouseEvent me);
+	public abstract ScreenLogic InterperetUserInput(UserInput ui);
 	
 	public abstract void addSubComponents(JFrame frame);
 	
@@ -28,6 +28,7 @@ public abstract class ScreenLogic extends JComponent{
 	public void startTimer() {
 		if(timer == null) {
 			timeStep = 0;
+		
 			timer = new Timer(1000/fps, new ActionListener() {
 				
 				@Override

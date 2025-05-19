@@ -22,9 +22,9 @@ public class CurveViewer extends ScreenLogic {
 	}
 	
 	@Override
-	public ScreenLogic InterperetUserInput(KeyEvent ke, MouseEvent me) {
-		if(ke != null) {
-			switch(ke.getKeyCode()) {
+	public ScreenLogic InterperetUserInput(UserInput ui) {
+		if(ui.ke != null) {
+			switch(ui.ke.getKeyCode()) {
 				case KeyEvent.VK_BACK_SPACE:
 					endTimer();
 					return new ControlPanel();

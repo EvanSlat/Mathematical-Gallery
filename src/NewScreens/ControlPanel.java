@@ -102,7 +102,7 @@ public class ControlPanel extends ScreenLogic {
 
 	
 	@Override
-	public ScreenLogic InterperetUserInput(KeyEvent ke, MouseEvent me) {
+	public ScreenLogic InterperetUserInput(UserInput ui) {
 		return null;
 	}
 }

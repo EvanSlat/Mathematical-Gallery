@@ -27,69 +27,7 @@ public class MainManager {
 		frame.setTitle("Neet curve");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(new Dimension(1000,1000));
-		frame.addKeyListener(new KeyListener() {
-
-			@Override
-			public void keyTyped(KeyEvent e) {
-//				userInputs(e,null);
-			}
-
-			@Override
-			public void keyPressed(KeyEvent e) {
-				userInputs(e,null);
-			}
-
-			@Override
-			public void keyReleased(KeyEvent e) {
-			}
-			
-		});
-		//TODO find out if I need the additinal information events
-		frame.addMouseListener(new MouseListener() {
-			
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				
-			}
-			
-			@Override
-			public void mousePressed(MouseEvent e) {
-				
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent e) {
-
-			}
-			
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				userInputs(null,e);
-				
-			}
-		});
 		
-		frame.addMouseMotionListener(new MouseMotionListener() {
-			
-			private int priorX = 0;
-			private int priorY = 0;
-			@Override
-			public void mouseMoved(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseDragged(MouseEvent e) {
-				//TODO make a system for tracking how far the mouse has moved after being pressed
-				
-			}
-		});
 		
 		
 //		currentScreen = new ControlPanel();
@@ -97,6 +35,7 @@ public class MainManager {
 		frame.add(currentScreen);
 		currentScreen.addSubComponents(frame);
 //		frame.pack();
+		UserInput.setUpListeners(frame);
 		
 		frame.setVisible(true);
 		
@@ -116,10 +55,13 @@ public class MainManager {
 		currentScreen = ns;
 	}
 	
-	public static void userInputs(KeyEvent ke, MouseEvent me) {
-		ScreenLogic newScreen = currentScreen.InterperetUserInput(ke, me);
+	public static void userInputs(UserInput ui) {
+		ScreenLogic newScreen = currentScreen.InterperetUserInput(ui);
 		if(newScreen != null) {
 			changeScreens(newScreen);
 		}
 	}
+	
+	
+	
 }
