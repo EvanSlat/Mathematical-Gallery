@@ -10,42 +10,73 @@ import javax.swing.JFrame;
 
 public class MandelViewer extends ScreenLogic{
 	
-	private Mandelbrot func;
-	private int xOffset;
-	private int yOffset;
-	private double baseX = -2.0;
-	private double baseY = -2.0;
-	private double baseW = 4.0;
-	private double baseH = 4.0;
-	private int sW = 300;
-	private int sH = 300;
+	private MandelbrotV2 func;
+	private double baseX = 0;
+	private double baseY = 0;
+	private double baseScale = (long) 4.0;
+	private double scale = 1;
+//	private double scaleRate = 1.3;
+	private int itterations = 300;
+	private double ScreenRadio = 1;
 	MandelViewer(){
-		func = new Mandelbrot(baseX,baseY,baseW,baseH,5000,5000,100,sW,sH);
-		xOffset = 0;
-		yOffset = 0;
+		ScreenRadio = (this.getHeight()+0.0)/(this.getWidth()+0.0);
+		func = new MandelbrotV2(baseY, baseX, baseScale, (baseScale*ScreenRadio), itterations, this.getWidth(), this.getHeight());
 	}
 	
 	@Override
 	public ScreenLogic InterperetUserInput(UserInput ui) {
+		boolean ranInput = false;
+		ScreenRadio = (this.getHeight()+0.0)/(this.getWidth()+0.0);
 		if(ui.me != null) {
 			if(ui.mouseDragEvent) {
-				xOffset -= ui.deltaX;
-				yOffset -= ui.deltaY;
-				this.repaint();
+				ranInput = true;
+				baseY += baseScale/this.getWidth()*ui.deltaX;
+				baseX += baseScale*ScreenRadio/this.getHeight()*ui.deltaY;
 			}
 		}
 		
 		if(ui.mwe != null) {
-			baseX += (ui.mwe.getUnitsToScroll()*0.1);
-			baseY += (ui.mwe.getUnitsToScroll()*0.1);  
-			baseW -= (ui.mwe.getUnitsToScroll()*0.2);  
-			baseH -= (ui.mwe.getUnitsToScroll()*0.2);
-			sW +=  (ui.mwe.getUnitsToScroll()*30);
-			sH +=  (ui.mwe.getUnitsToScroll()*30);
-			func = new Mandelbrot(baseX,baseY,baseW,baseH,5000,5000,100,sW,sH);
-			this.repaint();
+			ranInput = true;
+			int scrollDirection = -1;
+			if(ui.mwe.getUnitsToScroll()>0) {
+				scrollDirection = 1;
+			}
+			baseScale += (scrollDirection*scale);  
+			if(scrollDirection> 0) {
+				scale = baseScale*2;
+			}else {
+				scale = baseScale/2;
+			}
+
 		}
 		
+		if(baseX > 2) {
+			baseX = 2;
+		}
+		if(baseX < -2) {
+			baseX = -2;
+		}
+		if(baseY > 2) {
+			baseY = 2;
+		}
+		if(baseY < -2) {
+			baseY = -2;
+		}
+		if(baseScale < 0) {
+			baseScale = 0;
+		}
+		if(baseScale > 4) {
+			baseScale = 4;
+		}
+		if(scale > 1) {
+			scale = 1;
+		}
+		if(ranInput) {
+			System.out.println("Origin:"+baseX +","+baseY+": sizes:"+baseScale +","+ baseScale*ScreenRadio+": Scale:"+scale);
+			func = new MandelbrotV2(baseY, baseX, baseScale,  (baseScale*ScreenRadio), itterations, this.getWidth(), this.getHeight());
+			ScreenRadio = (this.getHeight()+0.0)/(this.getWidth()+0.0);
+			this.repaint();
+		}
 		
 		return null;
 	}
@@ -55,9 +86,6 @@ public class MandelViewer extends ScreenLogic{
 
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
-		//TODO factor in the screen shifting here, it will let people move the screen around more
-		g2.translate(this.getWidth()/2, this.getHeight()/2); 
-		g2.translate(xOffset,yOffset);
 		func.drawFrame(g2,0);
 	}
 	

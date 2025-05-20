@@ -128,13 +128,6 @@ public class Mandelbrot implements MathFunction {
 			//move rectangle to desired location
 			g.translate(m.originalP.x*sW,m.originalP.y*sH);
 			//set its color
-			//draw it
-//			if(m.iteration >= 1) {
-//				g.setColor(new Color(255,255,255));
-//				
-//			}else {
-//				g.setColor(new Color(0,0,0));
-//			}
 			g.setColor(colors.get(m.iteration));
 			g.fill(r);
 			g.draw(r);

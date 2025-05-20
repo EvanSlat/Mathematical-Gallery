@@ -38,7 +38,8 @@ public class MainManager {
 		UserInput.setUpListeners(frame);
 		
 		frame.setVisible(true);
-		
+		frame.revalidate();
+		frame.repaint();
 	}
 	
 	public static void changeScreens(ScreenLogic ns) {
