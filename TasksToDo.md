@@ -5,4 +5,4 @@
 
 4) create mandelbrot contol pannel
 
-5) set up zooming and panning with the mandelbrot pannel
+5) see about making another abstract for contorl pannels

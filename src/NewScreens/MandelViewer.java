@@ -18,7 +18,8 @@ public class MandelViewer extends ScreenLogic{
 //	private double scaleRate = 1.3;
 	private int itterations = 300;
 	private double ScreenRadio = 1;
-	MandelViewer(){
+	MandelViewer(int itterations){
+		this.itterations = itterations;
 		ScreenRadio = (this.getHeight()+0.0)/(this.getWidth()+0.0);
 		func = new MandelbrotV2(baseY, baseX, baseScale, (baseScale*ScreenRadio), itterations, this.getWidth(), this.getHeight());
 	}
@@ -26,6 +27,18 @@ public class MandelViewer extends ScreenLogic{
 	@Override
 	public ScreenLogic InterperetUserInput(UserInput ui) {
 		boolean ranInput = false;
+		if(ui.ke != null) {
+			switch(ui.ke.getKeyCode()) {
+			case KeyEvent.VK_BACK_SPACE:
+				endTimer();
+				return new MandelbrotControlPanel();
+			default:
+				break;
+			}
+		}
+		
+		
+		
 		ScreenRadio = (this.getHeight()+0.0)/(this.getWidth()+0.0);
 		if(ui.me != null) {
 			if(ui.mouseDragEvent) {
@@ -74,7 +87,6 @@ public class MandelViewer extends ScreenLogic{
 		if(ranInput) {
 			System.out.println("Origin:"+baseX +","+baseY+": sizes:"+baseScale +","+ baseScale*ScreenRadio+": Scale:"+scale);
 			func = new MandelbrotV2(baseY, baseX, baseScale,  (baseScale*ScreenRadio), itterations, this.getWidth(), this.getHeight());
-			ScreenRadio = (this.getHeight()+0.0)/(this.getWidth()+0.0);
 			this.repaint();
 		}
 		

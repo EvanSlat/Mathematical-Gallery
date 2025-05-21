@@ -16,7 +16,7 @@ import javax.swing.text.JTextComponent;
 /*
  * This will eventuialy be able to be used for selecting multiple stuff and setting the paramiters of it, however for now it will not due so
  */
-public class ControlPanel extends ScreenLogic {
+public class CardiodControlPanel extends ControlPanelLogic {
 	private JTextField pointsText;
 	private JTextField pointsInput;
 	private JTextField radiusText;
@@ -33,15 +33,11 @@ public class ControlPanel extends ScreenLogic {
 	
 	private JTextField[] allComponents;
 	
-	public ControlPanel() {
-		setUpComponents();
-	}
-	
 	
 	private void setUpComponents() {
 		allComponents = new JTextField[10];
 		localPanel = new JPanel();
-		localPanel.setBounds(0, 0, MainManager.FRAME_WIDTH, MainManager.FRAME_HEIGHT);
+		localPanel.setBounds(0, 30, MainManager.FRAME_WIDTH, MainManager.FRAME_HEIGHT);
 		localPanel.setLayout(null);
 		
 		pointsText  = new JTextField("Enter Number of Points");
@@ -97,6 +93,8 @@ public class ControlPanel extends ScreenLogic {
 
 	@Override
 	public void addSubComponents(JFrame frame) {
+		super.addSubComponents(frame);
+		setUpComponents();
 		frame.add(localPanel);
 	}
 
@@ -104,5 +102,11 @@ public class ControlPanel extends ScreenLogic {
 	@Override
 	public ScreenLogic InterperetUserInput(UserInput ui) {
 		return null;
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Cardiod";
 	}
 }

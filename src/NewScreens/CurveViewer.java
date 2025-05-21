@@ -27,7 +27,7 @@ public class CurveViewer extends ScreenLogic {
 			switch(ui.ke.getKeyCode()) {
 				case KeyEvent.VK_BACK_SPACE:
 					endTimer();
-					return new ControlPanel();
+					return new CardiodControlPanel();
 				case KeyEvent.VK_SPACE:
 					pauseUnpauseTimer();
 					break;

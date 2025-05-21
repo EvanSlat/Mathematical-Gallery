@@ -31,15 +31,16 @@ public class MainManager {
 		
 		
 //		currentScreen = new ControlPanel();
-		currentScreen = new MandelViewer();
+		currentScreen = new CardiodControlPanel();
 		frame.add(currentScreen);
-		currentScreen.addSubComponents(frame);
 //		frame.pack();
 		UserInput.setUpListeners(frame);
 		
 		frame.setVisible(true);
+		currentScreen.addSubComponents(frame);
 		frame.revalidate();
 		frame.repaint();
+		
 	}
 	
 	public static void changeScreens(ScreenLogic ns) {
