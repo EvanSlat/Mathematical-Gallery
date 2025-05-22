@@ -12,9 +12,16 @@ public class Point {
 		this.y = y;
 	}
 	
-	public void add(Point p2) {
+	public Point add(Point p2) {
 		x += p2.x;
-		y += p2.y; 
+		y += p2.y;
+		return this;
+	}
+	
+	public Point subtract(Point p2) {
+		x -= p2.x;
+		y -= p2.y;
+		return this;
 	}
 	
 	public double distance(Point p2) {
