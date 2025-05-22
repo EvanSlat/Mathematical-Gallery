@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import auxilory.Point;
 import main.ControlPanelLogic;
 import main.MainManager;
 import main.ScreenLogic;
@@ -30,7 +31,8 @@ public class NewtonControlPanel extends ControlPanelLogic {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				MainManager.changeScreens(new NewtonViewer());
+				Point[] roots= {new Point(1,0),new Point(-1,-1), new Point(-1, 1)};
+				MainManager.changeScreens(new NewtonViewer(100, roots));
 			}
 		});
 		

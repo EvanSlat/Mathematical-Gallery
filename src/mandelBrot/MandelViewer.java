@@ -17,7 +17,7 @@ public class MandelViewer extends ScreenLogic{
 	private MandelbrotV2 func;
 	private double baseX = 0;
 	private double baseY = 0;
-	private double baseScale = (long) 4.0;
+	private double baseScale = 4.0;
 	private double scale = 1;
 //	private double scaleRate = 1.3;
 	private int itterations = 300;
@@ -26,6 +26,7 @@ public class MandelViewer extends ScreenLogic{
 		this.itterations = itterations;
 		ScreenRadio = (this.getHeight()+0.0)/(this.getWidth()+0.0);
 		func = new MandelbrotV2(baseY, baseX, baseScale, (baseScale*ScreenRadio), itterations, this.getWidth(), this.getHeight());
+		this.repaint();
 	}
 	
 	@Override
