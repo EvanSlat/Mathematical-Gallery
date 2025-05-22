@@ -1,3 +1,4 @@
+package main;
 
 
 import java.awt.Container;
@@ -9,6 +10,8 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 import javax.swing.JFrame;
+
+import cardiod.CardiodControlPanel;
 
 /*
  * Goal of this class is to control what screen are seen 

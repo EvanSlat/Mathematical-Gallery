@@ -1,3 +1,4 @@
+package mandelBrot;
 
 
 import java.awt.event.ActionEvent;
@@ -7,6 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import main.*;
 
 public class MandelbrotControlPanel extends ControlPanelLogic {
 	private JPanel localPanel;
@@ -55,8 +58,7 @@ public class MandelbrotControlPanel extends ControlPanelLogic {
 	}
 
 	@Override
-	public void addSubComponents(JFrame frame) {
-		super.addSubComponents(frame);
+	public void addMySubComponents(JFrame frame) {
 		setUpComponents();
 		frame.add(localPanel);
 

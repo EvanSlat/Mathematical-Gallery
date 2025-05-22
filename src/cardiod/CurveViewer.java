@@ -1,3 +1,4 @@
+package cardiod;
 
 
 import java.awt.Graphics;
@@ -6,6 +7,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
+
+import main.ScreenLogic;
+import main.UserInput;
 
 public class CurveViewer extends ScreenLogic {
 	private static final long serialVersionUID = 1L;

@@ -1,3 +1,4 @@
+package mandelBrot;
 
 
 import java.awt.Color;
@@ -11,6 +12,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
+
+import auxilory.IPoint;
+import auxilory.MathFunction;
+import auxilory.Point;
 
 public class Mandelbrot implements MathFunction {
 

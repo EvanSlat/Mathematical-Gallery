@@ -1,3 +1,5 @@
+package cardiod;
+
 
 
 import java.awt.Graphics;
@@ -12,6 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.text.JTextComponent;
+
+import main.*;
 
 /*
  * This will eventuialy be able to be used for selecting multiple stuff and setting the paramiters of it, however for now it will not due so
@@ -92,8 +96,7 @@ public class CardiodControlPanel extends ControlPanelLogic {
 	
 
 	@Override
-	public void addSubComponents(JFrame frame) {
-		super.addSubComponents(frame);
+	public void addMySubComponents(JFrame frame) {
 		setUpComponents();
 		frame.add(localPanel);
 	}

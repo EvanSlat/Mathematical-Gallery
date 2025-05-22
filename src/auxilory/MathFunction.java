@@ -1,3 +1,4 @@
+package auxilory;
 
 
 import java.awt.Graphics2D;

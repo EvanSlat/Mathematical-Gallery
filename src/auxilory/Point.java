@@ -1,6 +1,8 @@
-
-
 //TODO make this standard for future points
+package auxilory;
+
+
+
 public class Point {
 	public double x;
 	public double y;

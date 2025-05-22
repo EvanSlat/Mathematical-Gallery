@@ -1,6 +1,4 @@
-
-
-
+package auxilory;
 public class IPoint extends Point{
 	
 	public IPoint(double r, double i) {

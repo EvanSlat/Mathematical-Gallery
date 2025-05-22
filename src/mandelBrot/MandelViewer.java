@@ -1,3 +1,4 @@
+package mandelBrot;
 
 
 import java.awt.Graphics;
@@ -7,6 +8,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 
 import javax.swing.JFrame;
+
+import main.ScreenLogic;
+import main.UserInput;
 
 public class MandelViewer extends ScreenLogic{
 	
@@ -85,7 +89,6 @@ public class MandelViewer extends ScreenLogic{
 			scale = 1;
 		}
 		if(ranInput) {
-			System.out.println("Origin:"+baseX +","+baseY+": sizes:"+baseScale +","+ baseScale*ScreenRadio+": Scale:"+scale);
 			func = new MandelbrotV2(baseY, baseX, baseScale,  (baseScale*ScreenRadio), itterations, this.getWidth(), this.getHeight());
 			this.repaint();
 		}

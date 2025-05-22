@@ -1,3 +1,4 @@
+package mandelBrot;
 
 
 import java.awt.Color;
@@ -6,6 +7,10 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
+
+import auxilory.IPoint;
+import auxilory.MathFunction;
+import auxilory.Point;
 
 
 public class MandelbrotV2 implements MathFunction{

@@ -1,3 +1,5 @@
+package cardiod;
+
 
 
 import java.awt.Color;
@@ -5,6 +7,8 @@ import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Line2D.Double;
 import java.util.ArrayList;
+
+import auxilory.MathFunction;
 
 public class Cardioid implements MathFunction {
 

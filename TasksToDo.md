@@ -1,8 +1,6 @@
 # TODO
-1) create drop down of all the contol panels
+1) create Newton Fractal (use mandel brot for reference)
 
-2) Create new curves to showcase
+2) create a way to have a derivative in quick time, will be recurcive but should have a memory for speed
 
-4) create mandelbrot contol pannel
-
-5) see about making another abstract for contorl pannels
+3) set up way for contole panel to have input for multiple potentila points
