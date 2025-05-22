@@ -1,4 +1,4 @@
-package NewScreens;
+
 
 //TODO make this standard for future points
 public class Point {
