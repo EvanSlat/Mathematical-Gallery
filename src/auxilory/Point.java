@@ -3,7 +3,7 @@ package auxilory;
 
 
 
-public class Point {
+public class Point implements Comparable<Point>{
 	public double x;
 	public double y;
 	
@@ -30,6 +30,11 @@ public class Point {
 	
 	public double distanceOrigin() {
 		return Math.sqrt(Math.pow(x, 2)+Math.pow(y, 2));
+	}
+
+	@Override
+	public int compareTo(Point o) {
+		return (int) (100*(Math.abs(x-o.x)+Math.abs(y-o.y)));
 	}
 	
 	//TODO figure out if mult should be a thing

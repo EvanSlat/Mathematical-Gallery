@@ -51,7 +51,7 @@ public class Cardioid implements MathFunction {
 		g.drawOval(-radius, -radius, radius*2, radius*2);
 		double bluetint = 0;
 		for(int i = 0; i<xPoints.length; i++) {
-			int pointTo = (int) (i * timeStep * stepScale + 0.5);
+			int pointTo = (int) (i * stepScale * timeStep + 0.5);
 			pointTo = pointTo % (int)((totalPoints/1));
 			Line2D.Double line = new Double(xPoints[i], yPoints[i], xPoints[pointTo], yPoints[pointTo]);
 			bluetint += 255.0/xPoints.length;

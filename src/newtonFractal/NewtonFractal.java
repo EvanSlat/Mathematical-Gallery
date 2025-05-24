@@ -21,6 +21,8 @@ public class NewtonFractal implements MathFunction {
 	private double calcOriginX, calcOriginY;
 	private int maxIterations;
 	
+	private final int THRESHHOLDRANGE = 4;
+	
 	public NewtonFractal(double cox, double coy, double cw, double ch, int mi, int sw, int sh, Point[] roots) {
 		screenWidth = sw;
 		screenHeight = sh;
@@ -37,15 +39,16 @@ public class NewtonFractal implements MathFunction {
 	
 	private void setupPoints() {
 		
-		double threshhold = roots[0].distance(roots[1])/3;
+		double threshhold = roots[0].distance(roots[1])/THRESHHOLDRANGE;
 		for(int i = 0; i<roots.length;i++) {
 			for(int j = 1; j<roots.length;j++) {
 				if(i == j) {
 					continue;
 				}
 				
-				if(threshhold > roots[0].distance(roots[1])/3)
-				threshhold = roots[0].distance(roots[1])/3;
+				if(threshhold > roots[0].distance(roots[1])/THRESHHOLDRANGE) {					
+					threshhold = roots[0].distance(roots[1])/THRESHHOLDRANGE;
+				}
 			}
 		}
 		
