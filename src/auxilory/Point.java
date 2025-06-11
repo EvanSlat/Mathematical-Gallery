@@ -2,7 +2,7 @@
 package auxilory;
 
 
-
+//oporators that edit a point should always return themselves
 public class Point implements Comparable<Point>{
 	public double x;
 	public double y;
